@@ -30,7 +30,7 @@ function getName(character) {
  */
 function getFilmCount(character) {
   // TODO: Add your code inside the functions (others below).
-
+  return character.films.length;
 }
 
 /**
@@ -43,6 +43,10 @@ function getFilmCount(character) {
 */
 function getSecondStarshipName(character) {
   // TODO: Add your code here.
+  if (character.starships.length > 0) {
+    return character.starships[1].name
+  }
+  else {return "none"}
 }
 
 /**
@@ -56,6 +60,7 @@ function getSecondStarshipName(character) {
  */
 function getSummary(character) {
   // TODO: Add your code here.
+  return `${character.name}, ${character.height}cm, ${character.mass}kg. Featured in ${character.films.length} films.`
 }
 
 /**
@@ -68,6 +73,11 @@ function getSummary(character) {
 */
 function getVehiclesCostInCreditsSumTotal(character) {
   // TODO: Add your code here.
+  const costArray = character.vehicles.map(character => Number(character.cost_in_credits))
+
+  // console.log(netWorthArray)
+  // total the networth
+  return costArray.reduce((acc, num) => acc + num)
 }
 
 /**
@@ -82,6 +92,10 @@ function getVehiclesCostInCreditsSumTotal(character) {
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
   // TODO: Add your code here.
+  if (character.starships.length > 0) {
+  const passArray = character.starships.map(character => (character.passengers + character.crew));
+  return passArray.reduce((acc, num) => acc + num);
+  } else {return 0}
 }
 
 /**
@@ -99,6 +113,12 @@ function getStarshipPassengerAndCrewSumTotal(character) {
 */
 function getNthFilm(character, filmNumber) {
   // TODO: Add your code here.
+  if (character.films.length > 0) {
+    return character.films[filmNumber - 1]
+  }
+  else if (character.films.length > 3) {
+    return "Romeo and Juliet"
+  }
 }
 
 /**
